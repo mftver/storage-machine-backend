@@ -7,6 +7,11 @@ open Stock
 
 /// Data access operations of the Stock component implemented using the simulated in-memory DB.
 let stockPersistence = { new IStockDataAccess with
+    member this.StoreBin bin = 
+        match SimulatedDatabase.storeBin bin with
+        | Ok msg -> Ok msg
+        | Error msg -> Error (msg.ToString())
+        
     
     member this.RetrieveAllBins () =
         SimulatedDatabase.retrieveBins ()

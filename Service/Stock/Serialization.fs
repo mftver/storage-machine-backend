@@ -34,6 +34,16 @@ let decoderPartNumber : Decoder<PartNumber> =
         | Error validationMessage -> Decode.fail validationMessage
     )
 
+// decoder for bin
+let decoderBin : Decoder<Bin> =
+    Decode.object (fun get -> 
+        {
+            Identifier = get.Required.Field "binIdentifier" decoderBinIdentifier
+            Content = get.Optional.Field "content" decoderPartNumber
+        }
+    )
+    
+
 /// JSON serialization of a stock product.
 let encoderProduct : Encoder<Product> = fun product ->
     let (Product (PartNumber partNumberString)) = product

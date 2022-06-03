@@ -15,7 +15,8 @@ type IBinTreeDataAccess =
 /// A trivial use-case for retrieving a tree of bins based on the identifier of the outer bin. Result is 'None' if the
 /// outer bin does not exist.
 let viewBinTree (dataAccess : IBinTreeDataAccess) (bin : BinIdentifier) : Option<BinTree> =
-    dataAccess.RetrieveBinTree bin
+    let normalTree = dataAccess.RetrieveBinTree bin
+    Option.map packed normalTree
 
 /// Count all products contained in all bins of the identified bin tree. Result is 'None' when there is no bin tree
 /// for the provided identifier.

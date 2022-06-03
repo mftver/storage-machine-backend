@@ -21,7 +21,6 @@ let allProducts bins : List<Product> =
     |> Seq.choose (fun bin -> bin.Content)
     |> Seq.map Product
     |> Seq.toList
-// TODO: Exercise 0: what if a bin occurs multiple times in the input?
 
 /// Total quantity of each of the provided products.
 let totalQuantity products : Map<Product, Quantity> =

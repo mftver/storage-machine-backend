@@ -11,6 +11,9 @@ type IStockDataAccess =
     /// Retrieve all bins currently stored in the Storage Machine.
     abstract RetrieveAllBins : unit -> List<Bin>
 
+    /// Store a bins in the Storage Machine.
+    abstract StoreBin : Bin -> Result<unit, string>
+
 /// An overview of all bins currently stored in the Storage Machine.
 let binOverview (dataAccess : IStockDataAccess) : List<Bin> =
     // Trivially
